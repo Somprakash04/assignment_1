@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import '../models/dish.dart';
 import '../utils/rating_stars.dart';
+import '../utils/constants.dart';
 
 class DishCard extends StatelessWidget {
   final Dish dish;
@@ -15,12 +16,15 @@ class DishCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Make image height responsive to screen width for better layout on different devices
+    final imageHeight = MediaQuery.of(context).size.width * 0.6;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Stack(
           children: [
-            Center(
+            SizedBox(
+              width: double.infinity,
               child: Container(
                 decoration: BoxDecoration(
                   boxShadow: [
@@ -34,18 +38,36 @@ class DishCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(16),
                   color: Colors.white,
                 ),
-                padding: const EdgeInsets.all(16),
-                child: Image.network(
-                  dish.imageUrl,
-                  width: 250,
-                  height: 250,
-                  fit: BoxFit.cover,
+                padding: const EdgeInsets.all(0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child:
+                      dish.imageUrl.startsWith('http')
+                          ? Image.network(
+                            dish.imageUrl,
+                            width: double.infinity,
+                            height: imageHeight,
+                            fit: BoxFit.cover,
+                            errorBuilder:
+                                (context, error, stackTrace) => Image.asset(
+                                  Constants.offlineImage,
+                                  width: double.infinity,
+                                  height: imageHeight,
+                                  fit: BoxFit.cover,
+                                ),
+                          )
+                          : Image.asset(
+                            dish.imageUrl,
+                            width: double.infinity,
+                            height: imageHeight,
+                            fit: BoxFit.cover,
+                          ),
                 ),
               ),
             ),
             Positioned(
-              right: 50,
-              bottom: 20,
+              right: 1,
+              bottom: 1,
               child: GestureDetector(
                 onTap: () => onFavoriteToggle(dish.id),
                 child: CircleAvatar(
@@ -63,10 +85,7 @@ class DishCard extends StatelessWidget {
         const SizedBox(height: 12),
         Text(
           dish.name,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
-          ),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
         ),
         const SizedBox(height: 4),
         Row(

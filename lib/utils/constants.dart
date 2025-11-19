@@ -2,11 +2,13 @@
 import 'package:flutter/material.dart';
 
 class Constants {
-  static const String asparagusImageUrl =
-      'https://assets.bonappetit.com/photos/5ace174fff795274c43a0d6b/1:1/w_1600,c_limit/blistered-asparagus.jpg';
+  static const String asparagusImageUrl = 'assets/images/asparagus.jpeg';
+
+  // Default offline / placeholder image from assets
+  static const String offlineImage = 'assets/images/asparagus.jpeg';
 
   static const Color primaryColor = Colors.red;
   static const Color accentColor = Colors.redAccent;
 
-  static const double iconSize = 28;
+  static const double iconSize = 10;
 }

@@ -1,6 +1,7 @@
 // lib/widgets/popular_item_card.dart
 import 'package:flutter/material.dart';
 import '../models/popular_item.dart';
+import '../utils/constants.dart';
 
 class PopularItemCard extends StatelessWidget {
   final PopularItem popularItem;
@@ -16,13 +17,30 @@ class PopularItemCard extends StatelessWidget {
       child: Row(
         children: [
           ClipRRect(
-            borderRadius: const BorderRadius.horizontal(left: Radius.circular(12)),
-            child: Image.network(
-              popularItem.imageUrl,
-              width: 100,
-              height: 80,
-              fit: BoxFit.cover,
+            borderRadius: const BorderRadius.horizontal(
+              left: Radius.circular(12),
             ),
+            child:
+                popularItem.imageUrl.startsWith('http')
+                    ? Image.network(
+                      popularItem.imageUrl,
+                      width: 100,
+                      height: 80,
+                      fit: BoxFit.cover,
+                      errorBuilder:
+                          (context, error, stackTrace) => Image.asset(
+                            Constants.offlineImage,
+                            width: 100,
+                            height: 80,
+                            fit: BoxFit.cover,
+                          ),
+                    )
+                    : Image.asset(
+                      popularItem.imageUrl,
+                      width: 100,
+                      height: 80,
+                      fit: BoxFit.cover,
+                    ),
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -41,7 +59,7 @@ class PopularItemCard extends StatelessWidget {
                 color: Colors.red,
               ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -47,13 +47,13 @@ class AppState extends ChangeNotifier {
     PopularItem(
       id: 'p1',
       name: 'Pasta',
-      imageUrl: 'https://images.unsplash.com/photo-1525755662778-989d0524087e',
+      imageUrl: 'assets/images/pasta.jpeg',
       price: 12.99,
     ),
     PopularItem(
       id: 'p2',
       name: 'Burger',
-      imageUrl: 'https://images.unsplash.com/photo-1550547660-d9450f859349',
+      imageUrl: 'assets/images/burger.jpeg',
       price: 10.50,
     ),
   ];
