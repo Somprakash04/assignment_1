@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
               'Food Categories',
               style: TextStyle(fontWeight: FontWeight.w900, fontSize: 22),
             ),
-            const SizedBox(height: 14),
+            const SizedBox(height: 10),
             // lib/screens/home_screen.dart (Food Categories snippet)
             SizedBox(
               height: 90,

@@ -10,16 +10,16 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 4),
       margin: const EdgeInsets.only(right: 14),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(25),
         boxShadow: [
           BoxShadow(
             color: Colors.black12,
             blurRadius: 12,
-            spreadRadius: 2,
+            spreadRadius: 4,
             offset: const Offset(0, 6),
           ),
         ],

@@ -28,7 +28,6 @@ class App extends StatelessWidget {
       routes: {
         HomeScreen.routeName: (_) => const HomeScreen(),
         FavoritesScreen.routeName: (_) => const FavoritesScreen(),
-        // SearchScreen.routeName: (_) => const SearchScreen(),
         CartScreen.routeName: (_) => const CartScreen(),
         ProfileScreen.routeName: (_) => const ProfileScreen(),
       },
