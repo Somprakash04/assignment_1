@@ -67,7 +67,7 @@ class DishCard extends StatelessWidget {
             ),
             Positioned(
               right: 1,
-              bottom: 1,
+              bottom: 1 ,
               child: GestureDetector(
                 onTap: () => onFavoriteToggle(dish.id),
                 child: CircleAvatar(
